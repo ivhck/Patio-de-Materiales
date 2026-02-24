@@ -209,6 +209,105 @@ function setActiveNavLink() {
 document.addEventListener('DOMContentLoaded', setActiveNavLink);
 
 // ========================================
+// CAROUSEL FUNCTIONALITY
+// ========================================
+class Carousel {
+    constructor() {
+        this.slides = document.querySelectorAll('.carousel-slide');
+        this.indicators = document.querySelectorAll('.indicator');
+        this.currentSlide = 0;
+        this.autoRotateInterval = null;
+        this.autoRotateDelay = 5000; // 5 seconds
+
+        if (this.slides.length > 0) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Carousel buttons
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+
+        if (prevBtn) prevBtn.addEventListener('click', () => this.prevSlide());
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextSlide());
+
+        // Indicators
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        // Start auto-rotation
+        this.startAutoRotate();
+
+        // Pause on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => this.stopAutoRotate());
+            carouselContainer.addEventListener('mouseleave', () => this.startAutoRotate());
+        }
+    }
+
+    showSlide(index) {
+        // Ensure index is within bounds
+        if (index >= this.slides.length) {
+            this.currentSlide = 0;
+        } else if (index < 0) {
+            this.currentSlide = this.slides.length - 1;
+        } else {
+            this.currentSlide = index;
+        }
+
+        // Update slides
+        this.slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === this.currentSlide);
+        });
+
+        // Update indicators
+        this.indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === this.currentSlide);
+        });
+    }
+
+    nextSlide() {
+        this.showSlide(this.currentSlide + 1);
+        this.resetAutoRotate();
+    }
+
+    prevSlide() {
+        this.showSlide(this.currentSlide - 1);
+        this.resetAutoRotate();
+    }
+
+    goToSlide(index) {
+        this.showSlide(index);
+        this.resetAutoRotate();
+    }
+
+    startAutoRotate() {
+        this.autoRotateInterval = setInterval(() => {
+            this.showSlide(this.currentSlide + 1);
+        }, this.autoRotateDelay);
+    }
+
+    stopAutoRotate() {
+        if (this.autoRotateInterval) {
+            clearInterval(this.autoRotateInterval);
+        }
+    }
+
+    resetAutoRotate() {
+        this.stopAutoRotate();
+        this.startAutoRotate();
+    }
+}
+
+// Initialize carousel when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new Carousel();
+});
+
+// ========================================
 // LAZY LOADING IMAGES
 // ========================================
 if ('IntersectionObserver' in window) {

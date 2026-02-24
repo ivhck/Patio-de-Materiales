@@ -16,7 +16,7 @@
         <div class="header-container">
             <a href="index.html" class="logo">
                 <!-- CHANGE THIS: Add your company logo -->
-                <img src="assets/images/logo.png" alt="Logo Patio de Materiales">
+                <img src="assets/images/logo_h.svg" alt="Logo Patio de Materiales">
             </a>
             <nav>
                 <ul>
@@ -32,12 +32,52 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO CAROUSEL SECTION -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Bienvenido a Patio de Materiales</h1>
-            <p>Con 38 años en el mercado ofreciendo adoquín de concreto de calidad</p>
-            <a href="pages/products.html" class="btn btn-secondary">Comprar Ahora</a>
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <div class="carousel-slide active">
+                    <img src="assets/images/A_ Carousel.png" alt="Adoquín de Concreto - Patio de Materiales">
+                    <div class="carousel-overlay">
+                        <div class="hero-content">
+                            <h1>Bienvenido a Patio de Materiales</h1>
+                            <p>Con 38 años en el mercado ofreciendo adoquín de concreto de calidad</p>
+                            <a href="pages/products.html" class="btn btn-secondary">Comprar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/images/B_ Carousel.png" alt="Productos Premium - Patio de Materiales">
+                    <div class="carousel-overlay">
+                        <div class="hero-content">
+                            <h1>Productos Premium</h1>
+                            <p>Adoquín de concreto de la más alta calidad con garantía de durabilidad</p>
+                            <a href="pages/products.html" class="btn btn-secondary">Ver Catálogo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/images/C.jpg" alt="Soluciones de Pavimentación - Patio de Materiales">
+                    <div class="carousel-overlay">
+                        <div class="hero-content">
+                            <h1>Soluciones Integrales</h1>
+                            <p>Encuentra todas las soluciones para tus proyectos de pavimentación</p>
+                            <a href="pages/products.html" class="btn btn-secondary">Explorar Productos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-btn carousel-prev" aria-label="Anterior">&lt;</button>
+            <button class="carousel-btn carousel-next" aria-label="Siguiente">&gt;</button>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Ir al slide 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Ir al slide 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Ir al slide 3"></button>
+            </div>
         </div>
     </section>
 
